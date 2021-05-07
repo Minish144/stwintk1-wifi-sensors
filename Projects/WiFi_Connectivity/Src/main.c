@@ -84,8 +84,6 @@ int main(void)
   /* RTCinit function */
   RTC_Init();
 
-  WIFI_PRINTF("\n**** Start Demo ************************\n");
-  
   /* Initialize the seed of the stdlib rand() SW implementation from the RNG. */
   if (HAL_RNG_GenerateRandomNumber(&hrng, (uint32_t *) &random_number) == HAL_OK)
   {
@@ -114,41 +112,16 @@ int main(void)
 
       if(net_if_connect (&netif) == NET_OK)
       {
-        
-//        WIFI_PRINTF("\n****************************\n");
-//        WIFI_PRINTF("Ready for connection \n");
-//        WIFI_PRINTF("Hotspot configuration: \n");
-//        WIFI_PRINTF("SSID: %s\n", SSID);
-//        WIFI_PRINTF("PASSWORD: %s\n", PASSWORD);
-//
-//        net_if_wait_state(&netif,NET_STATE_CONNECTED,STATE_TRANSITION_TIMEOUT);
-//
-//        WIFI_PRINTF("\n****************************\n");
-//        TestPing();
-//
-//        WIFI_PRINTF("\n****************************\n");
-//        // do not check server identity first time to setup RTC
-//        TestTLSServerConnection(false);
-//
-//        WIFI_PRINTF("\n****************************\n");
-//        // check certificate validity period agains RTC clock
-//        TestTLSServerConnection(true);
-//
-        WIFI_PRINTF("\n****************************\n");
-        TestClient();
-
-//        WIFI_PRINTF("\n****************************\n");
-//        TestServer();
-//
-//        WIFI_PRINTF("\n**** End Demo ************************\n");
+		  while(1)
+		  {
+			  TestClient();
+			  HAL_Delay(1000);
+		  }
       }
     }
   }
 
-  while(1)
-  {
-	  TestClient();
-  }
+  while(1);
 }
 
 
