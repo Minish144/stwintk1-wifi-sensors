@@ -64,7 +64,7 @@ const   net_event_handler_t  net_handler   = { hnet_notify, &netif };
 int main(void)
 {
   unsigned int random_number = 0;
-
+  float temp = 0;
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
@@ -85,6 +85,12 @@ int main(void)
     srand(random_number);
   }
 
+
+//  /* HTS221 temperature sensor init */
+//  if(BSP_ENV_SENSOR_Init(HTS221_0, ENV_TEMPERATURE)==BSP_ERROR_NONE)
+//  {
+//    WIFI_PRINTF("HTS221 Initialized\n\r");
+//  }
 
   /* Network */
   if(net_if_init (&netif, &es_wifi_driver, &net_handler) == NET_OK )
@@ -110,8 +116,9 @@ int main(void)
 		  while(1)
 		  {
 			  /* HTTP REQUEST */
+
 			  TestClient();
-			  HAL_Delay(1000);
+			  HAL_Delay(1000); // 1s delay
 		  }
       }
     }
