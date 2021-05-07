@@ -68,36 +68,31 @@ int main(void)
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
-  /* Configure the system clock */
   SystemClock_Config();
 
-  /* Console Init */
   Console_Init();
 
-  /* RNG init function */
   hrng.Instance = RNG;
   if (HAL_RNG_Init(&hrng) != HAL_OK)
   {
     Error_Handler();
   }
 
-  /* RTCinit function */
   RTC_Init();
 
-  /* Initialize the seed of the stdlib rand() SW implementation from the RNG. */
   if (HAL_RNG_GenerateRandomNumber(&hrng, (uint32_t *) &random_number) == HAL_OK)
   {
     srand(random_number);
   }
 
 
-  /* Initialize the network stack */
+  /* Network */
   if(net_if_init (&netif, &es_wifi_driver, &net_handler) == NET_OK )
   {
     net_if_wait_state(&netif,NET_STATE_INITIALIZED,STATE_TRANSITION_TIMEOUT);
     if ( net_if_start (&netif) == NET_OK )
     {
-      net_wifi_credentials_t  Credentials =
+      net_wifi_credentials_t Credentials =
       {
         SSID,
         PASSWORD,
@@ -114,6 +109,7 @@ int main(void)
       {
 		  while(1)
 		  {
+			  /* HTTP REQUEST */
 			  TestClient();
 			  HAL_Delay(1000);
 		  }
