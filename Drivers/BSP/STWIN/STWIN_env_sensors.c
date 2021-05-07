@@ -89,7 +89,7 @@ int32_t BSP_ENV_SENSOR_Init(uint32_t Instance, uint32_t Functions)
       }
       break;
 #endif
-   
+
 #if (USE_ENV_SENSOR_LPS22HH_0 == 1)
     case LPS22HH_0:
       if (LPS22HH_0_Probe(Functions) != BSP_ERROR_NONE)
@@ -137,7 +137,7 @@ int32_t BSP_ENV_SENSOR_Init(uint32_t Instance, uint32_t Functions)
         component_functions |= ENV_PRESSURE;
       }
       break;
-#endif      
+#endif
     default:
       ret = BSP_ERROR_WRONG_PARAM;
       break;

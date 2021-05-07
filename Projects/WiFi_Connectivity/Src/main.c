@@ -24,6 +24,14 @@
 #include <stdio.h>
 #include <stdint.h>
 
+#ifndef SENSORS_IMPORT
+#define SENSORS_IMPORT
+
+#include "STWIN_env_sensors.h"
+#include "STWIN_env_sensors.c"
+
+#endif
+
 /* Global variables ---------------------------------------------------------*/
 #define STATE_TRANSITION_TIMEOUT        10000
 
@@ -86,11 +94,14 @@ int main(void)
   }
 
 
-//  /* HTS221 temperature sensor init */
-//  if(BSP_ENV_SENSOR_Init(HTS221_0, ENV_TEMPERATURE)==BSP_ERROR_NONE)
-//  {
-//    WIFI_PRINTF("HTS221 Initialized\n\r");
-//  }
+  /* HTS221 temperature sensor init */
+  if(BSP_ENV_SENSOR_Init(HTS221_0, ENV_TEMPERATURE)==BSP_ERROR_NONE)
+  {
+	  BSP_ENV_SENSOR_SetOutputDataRate(HTS221_0, ENV_TEMPERATURE, 12.5f);
+      WIFI_PRINTF("HTS221 Initialized\n\r");
+  }
+
+//  BSP_ENV_SENSOR_Get_Temperature_Limit_Status(HTS221_0, &temp, &temp, &temp);
 
   /* Network */
   if(net_if_init (&netif, &es_wifi_driver, &net_handler) == NET_OK )
@@ -116,15 +127,20 @@ int main(void)
 		  while(1)
 		  {
 			  /* HTTP REQUEST */
-
 			  TestClient();
+		      BSP_ENV_SENSOR_GetValue(HTS221_0, ENV_TEMPERATURE, (float *)&temp);
+		      WIFI_PRINTF("Temp: %f", temp);
 			  HAL_Delay(1000); // 1s delay
 		  }
       }
     }
   }
 
-  while(1);
+  while(1)
+  {
+      BSP_ENV_SENSOR_GetValue(HTS221_0, ENV_TEMPERATURE, (float *)&temp);
+	  HAL_Delay(1000); // 1s delay
+  }
 }
 
 

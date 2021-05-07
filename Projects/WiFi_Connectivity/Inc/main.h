@@ -32,8 +32,7 @@
 #include "STWIN.h"
 #include "STWIN_conf.h"
 #include "STWIN_wifi.h"
-#include "STWIN_env_sensors.h"
-   
+
 #include "usbd_def.h"
 #include "usbd_desc.h"
 #include "usbd_cdc.h"
