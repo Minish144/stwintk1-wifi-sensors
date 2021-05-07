@@ -18,7 +18,7 @@
   *
   ******************************************************************************
   */
-  
+
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include <stdio.h>
@@ -149,7 +149,7 @@ static void RTC_Init(void)
   {
     Error_Handler();
   }
-  
+
   /* Initialize RTC and set the Time and Date. */
   xsTime.Hours = 0x12;
   xsTime.Minutes = 0x0;
@@ -177,11 +177,11 @@ static void RTC_Init(void)
   * @brief UART console init function
   */
 static void Console_Init(void)
-{    
+{
   HAL_PWREx_EnableVddIO2();
   HAL_PWREx_EnableVddUSB();
   BSP_Enable_DCDC2();
-  
+
   USBD_Init(&hUsbDeviceFS, &FS_Desc, DEVICE_FS);
   USBD_RegisterClass(&hUsbDeviceFS, &USBD_CDC);
   USBD_CDC_RegisterInterface(&hUsbDeviceFS, &USBD_Interface_fops_FS);
@@ -223,7 +223,7 @@ GETCHAR_PROTOTYPE
 {
   /* Place your implementation of fgetc here */
   uint8_t ch = 0;
-  
+
   ch =  USB_getchar();
   return ch;
 }
@@ -286,22 +286,22 @@ static void hnet_notify (void *context, uint32_t event_class,uint32_t event_id, 
 * @retval None
 */
 void SystemClock_Config(void)
-{  
+{
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
-  
-  /** Configure the main internal regulator output voltage 
+
+  /** Configure the main internal regulator output voltage
   */
   if (HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1_BOOST) != HAL_OK)
   {
     Error_Handler();
   }
-  /** Configure LSE Drive Capability 
+  /** Configure LSE Drive Capability
   */
   HAL_PWR_EnableBkUpAccess();
   __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the CPU, AHB and APB busses clocks
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48|RCC_OSCILLATORTYPE_HSE
     |RCC_OSCILLATORTYPE_LSE;
@@ -319,7 +319,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the CPU, AHB and APB busses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
     |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
@@ -327,7 +327,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-  
+
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
   {
     Error_Handler();
@@ -353,9 +353,9 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  
+
     __HAL_RCC_PWR_CLK_ENABLE();
-  
+
 }
 
 
@@ -368,8 +368,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   if(GPIO_Pin == WIFI_DATA_READY_PIN)
   {
-    SPI_WIFI_ISR();  
-  }  
+    SPI_WIFI_ISR();
+  }
 }
 
 
@@ -397,7 +397,7 @@ void assert_failed(uint8_t* file, uint32_t line)
   /* User can add his own implementation to report the file name and line number,
   ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
   /* USER CODE END 6 */
-  
+
 }
 
 #endif
