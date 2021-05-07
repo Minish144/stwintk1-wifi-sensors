@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Release Notes for STSW-STWINKT01 Software for STWIN</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="_htmresc/mini-st_2020.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon" href="_htmresc/favicon.png" />
+</head>
+<body>
+<div class="row">
+<div class="col-sm-12 col-lg-4">
+<center>
+<h1 id="release-notes-for-stsw-stwinkt01">Release Notes for <mark>STSW-STWINKT01</mark></h1>
+<p>Copyright © 2020 STMicroelectronics<br />
+</p>
+<a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo.png" alt="ST logo" /></a>
+</center>
+<h1 id="license">License</h1>
+<p>This software component is licensed by ST under Ultimate Liberty license SLA0044, the “License”; You may not use this file except in compliance with the License. You may obtain a copy of the License at: <a href="http://www.st.com/SLA0044">SLA0044</a>.</p>
+<h1 id="purpose">Purpose</h1>
+<p>The <strong>STSW-STWINKT1</strong> firmware package for <strong>STWIN</strong> development kit (<strong>STEVAL-STWINKT1</strong>) provides sample projects for the development of custom applications. Built on STM32Cube software technology, it includes all the low level drivers to manage the on-board devices and system-level interfaces. The package comes with the <strong>Serial_DataLog</strong>, <strong>WiFi_Connectivity</strong> and <strong>BLE_SampleApp</strong> applications.</p>
+<ul>
+<li>The <strong>Serial_DataLog</strong> application shows how to stream sensor data via USB Virtual COM Port class. Data can be showed on a PC Terminal.</li>
+<li>The <strong>BLE_SampleApp</strong> provides an example of Bluetooth Low Energy configuration that enables STWIN to stream environmental sensor data; it is compatible with the STBLESensor app available for Android and iOS.</li>
+<li>The <strong>WiFi_Connectivity</strong> example implements basic network function using the connectivity framework. This example requires <strong>STEVAL-STWINWFV1</strong> Wi-Fi expansion.</li>
+</ul>
+<p>This firmware package includes Components Device Drivers, Board Support Package and example applications for the STWIN development kit (<strong>STEVAL-STWINKT1</strong>).</p>
+<p><img src="_htmresc/STSW-STWINKT01_Software_Architecture.jpg" /></p>
+<p>Here is the list of references to user documents:</p>
+<ul>
+<li><a href="https://www.st.com/resource/en/user_manual/dm00643532.pdf">UM2621</a> : How to use the software package for the SensorTile Wireless Industrial Node based on STM32Cube</li>
+<li><a href="https://www.st.com/stm32cube">STM32Cube</a> : STM32Cube</li>
+</ul>
+</div>
+<div class="col-sm-12 col-lg-8">
+<h1 id="update-history">Update History</h1>
+<div class="collapse">
+<input type="checkbox" id="collapse-section8" checked aria-hidden="true"> <label for="collapse-section8" aria-hidden="true"><strong>v2.1.0 / 13-Nov-2020</strong></label>
+<div>
+<h2 id="main-changes">Main Changes</h2>
+<h3 id="maintenance-release-and-product-update">Maintenance release and product update</h3>
+<ul>
+<li>Minor update for WiFi_Connectivity, Serial_DataLog and BLE_SampleApp</li>
+<li>Dropped support for HSDatalog example: now available in <a href="https://www.st.com/en/embedded-software/fp-sns-datalog1.html">FP-SNS-DATALOG1</a></li>
+<li>Updated HAL, drivers and middlewares based on the latest available STM32Cube HAL packages</li>
+<li>Updated STWIN BSP and Components drivers</li>
+</ul>
+<h2 id="contents">Contents</h2>
+<table>
+<caption>Documentation<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+<th style="text-align: left;">Document</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Doxygen documentation</strong></td>
+<td style="text-align: left;">2.1.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/content/st_com/en/search.html#q=SLA0055-t=resources-page=1">SLA0055</a></td>
+<td style="text-align: left;"><a href="Documentation\STSW-STWINKT01_Package.chm">CHM</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Projects<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+<th style="text-align: left;">Document</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>BLE_SampleApp</strong></td>
+<td style="text-align: left;">1.4.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Projects/BLE_SampleApp/readme.txt">Read Me</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Serial_DataLog</strong></td>
+<td style="text-align: left;">1.3.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Projects/Serial_DataLog/readme.txt">Read Me</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>WiFi_Connectivity</strong></td>
+<td style="text-align: left;">1.4.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Projects/WiFi_Connectivity/readme.txt">Read Me</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Middlewares<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+<th style="text-align: left;">Document</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ST/BlueNRG-2</td>
+<td style="text-align: left;">2.0.0</td>
+<td style="text-align: left;"><a href="http://www.st.com/software_license_agreement_liberty_v2">MCD-ST Liberty V2</a></td>
+<td style="text-align: left;"><a href="Middlewares\ST\BlueNRG-2\Release_Notes.html">Release Note</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>ST/STM32 SensorStreaming WCID Class</strong></td>
+<td style="text-align: left;">1.2.2</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares\ST\STM32_USB_Device_Library\Class\SensorStreaming_WCID\Release_Notes.html">Release Note</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>ST/STM32 USB Device Library</strong></td>
+<td style="text-align: left;">2.6.1</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares\ST\STM32_USB_Device_Library\Release_Notes.html">Release Note</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>ST/STM32 Connect Library</strong></td>
+<td style="text-align: left;">2.1.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares\ST\STM32_Connect_Library\Release_Notes.html">Release Note</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Third_Party/FatFs</td>
+<td style="text-align: left;">0.12c</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Middlewares\Third_Party\FatFs\doc\00index_e.html">Release Note</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Third_Party/parson</strong></td>
+<td style="text-align: left;">1.1.0</td>
+<td style="text-align: left;"><a href="http://opensource.org/licenses/mit-license.php">MIT</a></td>
+<td style="text-align: left;"><a href="Middlewares\Third_Party\parson\README.md">Release Note</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Third_Party/mbedTLS</td>
+<td style="text-align: left;">2.16.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Middlewares\Third_Party\mbedTLS\st_readme.txt">Read Me</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Third_Party/FreeRTOS</td>
+<td style="text-align: left;">10.2.1</td>
+<td style="text-align: left;"><a href="http://opensource.org/licenses/mit-license.php">MIT</a></td>
+<td style="text-align: left;"><a href="http://www.freertos.org/FreeRTOS-quick-start-guide.html">QSG</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Drivers<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+<th style="text-align: left;">Document</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>STM32L4xx CMSIS</strong></td>
+<td style="text-align: left;">1.7.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers\CMSIS\Device\ST\STM32L4xx\Release_Notes.html">Release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>STM32L4xx HAL</strong></td>
+<td style="text-align: left;">1.12.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers\STM32L4xx_HAL_Driver\Release_Notes.html">Release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>BSP STWIN</strong></td>
+<td style="text-align: left;">1.4.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers\BSP\STWIN\Release_Notes.html">Release notes</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Components<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+<th style="text-align: left;">Document</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Common</td>
+<td style="text-align: left;">6.0.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers\BSP\Components\Common\Release_Notes.html">Release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>es_wifi</strong></td>
+<td style="text-align: left;">1.6.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers\BSP\Components\es_wifi\Release_Notes.html">Release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">hts221</td>
+<td style="text-align: left;">5.2.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers\BSP\Components\hts221\Release_Notes.html">Release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>iis2dh</strong></td>
+<td style="text-align: left;">1.0.3</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers\BSP\Components\iis2dh\Release_Notes.html">Release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">iis2mdc</td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers\BSP\Components\iis2mdc\Release_Notes.html">Release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>iis3dwb</strong></td>
+<td style="text-align: left;">1.0.3</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers\BSP\Components\iis3dwb\Release_Notes.html">Release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ism330dhcx</td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers\BSP\Components\ism330dhcx\Release_Notes.html">Release notes</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lps22hh</td>
+<td style="text-align: left;">1.1.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers\BSP\Components\lps22hh\Release_Notes.html">Release notes</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stts751</td>
+<td style="text-align: left;">1.0.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers\BSP\Components\stts751\Release_Notes.html">Release notes</a></td>
+</tr>
+</tbody>
+</table>
+<p>Note: in the table above, components <strong>highlighted</strong> have changed since previous release.</p>
+<h2 id="known-limitations">Known Limitations</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="development-toolchains-and-compilers">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.5</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.30</li>
+<li>STM32CubeIDE V1.4.2</li>
+</ul>
+<h2 id="supported-devices-and-boards">Supported Devices and Boards</h2>
+<ul>
+<li><a href="https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/sensor-solution-eval-boards/steval-stwinkt1.html">STEVAL-STWINKT1</a></li>
+<li><a href="https://www.st.com/en/evaluation-tools/steval-stwinmav1.html">STEVAL-STWINWFV1</a></li>
+</ul>
+<h2 id="backward-compatibility">Backward Compatibility</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>None</li>
+</ul>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section7" aria-hidden="true"> <label for="collapse-section7" aria-hidden="true"><strong>v2.0.0 / 19-Jun-2020</strong></label>
+<div>
+<h2 id="main-changes-1">Main Changes</h2>
+<h3 id="maintenance-release-and-product-update-1">Maintenance release and product update</h3>
+<ul>
+<li><strong>Major update for HSDatalog example</strong>:
+<ul>
+<li>Complete FW redesign</li>
+<li>Improved user experience and streaming performance via USB and SDCard</li>
+<li>Added support for <a href="https://www.st.com/en/embedded-software/stblesensor.html">ST BLESensor app</a></li>
+<li>Added support for <a href="https://www.st.com/en/embedded-software/unico-gui.html">UNICO</a> for Machine Learning Core available in ISM330DHCX component</li>
+<li>Added hardware and software labelling features</li>
+<li>Redesigned Python utilities</li>
+<li>Redesigned JSON communication</li>
+</ul></li>
+<li>Minor update for WiFi_Connectivity, Serial_DataLog and BLE_SampleApp</li>
+<li>Dropped support for MicArrayCoupon, OnboardMics and UltrasoundFFT examples: audio-related applications are now available in <a href="https://www.st.com/en/embedded-software/x-cube-memsmic1.html">X-CUBE-MEMSMIC1</a></li>
+<li>Updated HAL, drivers and middlewares based on the latest available STM32Cube HAL packages</li>
+<li>New software examples to support HSDatalog applications</li>
+<li>Updated STWIN BSP and Components drivers</li>
+</ul>
+<h2 id="contents-1">Contents</h2>
+<table>
+<caption>Documentation<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Doxygen documentation</strong></td>
+<td style="text-align: left;">2.0.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/content/st_com/en/search.html#q=SLA0055-t=resources-page=1">SLA0055</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Projects<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>BLE_SampleApp</strong></td>
+<td style="text-align: left;">1.3.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>HSDatalog</strong></td>
+<td style="text-align: left;">3.0.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Serial_DataLog</strong></td>
+<td style="text-align: left;">1.2.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>WiFi_Connectivity</strong></td>
+<td style="text-align: left;">1.3.1</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Middlewares<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>ST/BlueNRG-2</strong></td>
+<td style="text-align: left;">2.0.0</td>
+<td style="text-align: left;"><a href="http://www.st.com/software_license_agreement_liberty_v2">MCD-ST Liberty V2</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>ST/STM32 SensorStreaming WCID Class</strong></td>
+<td style="text-align: left;">1.2.1</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ST/STM32 USB Device Library</td>
+<td style="text-align: left;">2.5.3</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ST/STM32 Connect Library</td>
+<td style="text-align: left;">1.0.2</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Third_Party/FatFs</td>
+<td style="text-align: left;">0.12c</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Third_Party/parson</strong></td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="http://opensource.org/licenses/mit-license.php">MIT</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Third_Party/mbedTLS</strong></td>
+<td style="text-align: left;">2.16.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Third_Party/FreeRTOS</td>
+<td style="text-align: left;">10.2.1</td>
+<td style="text-align: left;"><a href="http://opensource.org/licenses/mit-license.php">MIT</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Drivers<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>STM32L4xx CMSIS</strong></td>
+<td style="text-align: left;">1.6.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>STM32L4xx HAL</strong></td>
+<td style="text-align: left;">1.11.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>BSP STWIN</strong></td>
+<td style="text-align: left;">1.3.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Components<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Common</td>
+<td style="text-align: left;">6.0.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>es_wifi</strong></td>
+<td style="text-align: left;">1.5.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">hts221</td>
+<td style="text-align: left;">5.2.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">iis2dh</td>
+<td style="text-align: left;">1.0.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">iis2mdc</td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">iis3dwb</td>
+<td style="text-align: left;">1.0.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ism330dhcx</td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lps22hh</td>
+<td style="text-align: left;">1.1.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>stts751</strong></td>
+<td style="text-align: left;">1.0.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Utilities<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>HSDatalog</strong></td>
+<td style="text-align: left;">2.0.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nlohmann/json</td>
+<td style="text-align: left;">3.7.0</td>
+<td style="text-align: left;"><a href="http://opensource.org/licenses/MIT">MIT</a></td>
+</tr>
+</tbody>
+</table>
+<p>Note: in the table above, components <strong>highlighted</strong> have changed since previous release.</p>
+<h2 id="known-limitations-1">Known Limitations</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="development-toolchains-and-compilers-1">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.30</li>
+<li>STM32CubeIDE V1.3.0</li>
+</ul>
+<h2 id="supported-devices-and-boards-1">Supported Devices and Boards</h2>
+<ul>
+<li><a href="https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/sensor-solution-eval-boards/steval-stwinkt1.html">STEVAL-STWINKT1</a></li>
+<li><a href="https://www.st.com/en/evaluation-tools/steval-stwinmav1.html">STEVAL-STWINWFV1</a></li>
+</ul>
+<h2 id="backward-compatibility-1">Backward Compatibility</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="dependencies-1">Dependencies</h2>
+<ul>
+<li>None</li>
+</ul>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section6" aria-hidden="true"> <label for="collapse-section6" aria-hidden="true"><strong>v1.3.1 / 26-Feb-2020</strong></label>
+<div>
+<h2 id="main-changes-2">Main Changes</h2>
+<h3 id="patch-release">Patch release</h3>
+<ul>
+<li>Bug fixed in HSDatalog example</li>
+</ul>
+<h2 id="known-limitations-2">Known Limitations</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="development-toolchains-and-compilers-2">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1</li>
+<li>STM32CubeIDE Version 1.1.0</li>
+</ul>
+<h2 id="supported-devices-and-boards-2">Supported Devices and Boards</h2>
+<ul>
+<li><a href="https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/sensor-solution-eval-boards/steval-stwinkt1.html">STEVAL-STWINKT1</a></li>
+<li><a href="https://www.st.com/en/evaluation-tools/steval-stwinwfv1.html">STEVAL-STWINMAV1</a></li>
+<li><a href="https://www.st.com/en/evaluation-tools/steval-stwinmav1.html">STEVAL-STWINWFV1</a></li>
+</ul>
+<h2 id="backward-compatibility-2">Backward Compatibility</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="dependencies-2">Dependencies</h2>
+<ul>
+<li>None</li>
+</ul>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section5" aria-hidden="true"> <label for="collapse-section5" aria-hidden="true"><strong>v1.3.0 / 17-Jan-2020</strong></label>
+<div>
+<h2 id="main-changes-3">Main Changes</h2>
+<h3 id="maintenance-release-and-product-update-2">Maintenance release and product update</h3>
+<ul>
+<li>Updated HAL, drivers and middlewares based on the latest available STM32Cube HAL packages</li>
+<li>Added UltrasoundFFT example</li>
+<li>Updated HSDatalog example: improving user experience and streaming performance via USB and SDCard</li>
+<li>Updated BLE_SampleApp: code cleaning and bug fixed in USB_DEBUG mode</li>
+<li>New software examples to support UltrasoundFFT and HSDatalog applications</li>
+<li>Updated STWIN BSP and Components drivers</li>
+</ul>
+<h2 id="contents-2">Contents</h2>
+<table>
+<caption>Documentation<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Doxygen documentation</strong></td>
+<td style="text-align: left;">1.3.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/content/st_com/en/search.html#q=SLA0055-t=resources-page=1">SLA0055</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Projects<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>BLE_SampleApp</strong></td>
+<td style="text-align: left;">1.2.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>HSDatalog</strong></td>
+<td style="text-align: left;">2.1.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MicArrayCoupon</td>
+<td style="text-align: left;">1.1.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OnboardMics</td>
+<td style="text-align: left;">1.2.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Serial_DataLog</td>
+<td style="text-align: left;">1.1.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>UltrasoundFFT</strong></td>
+<td style="text-align: left;">1.0.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">WiFi_Connectivity</td>
+<td style="text-align: left;">1.2.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Middlewares<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>ST/BlueNRG-2</strong></td>
+<td style="text-align: left;">1.1.0</td>
+<td style="text-align: left;"><a href="http://www.st.com/software_license_agreement_liberty_v2">MCD-ST Liberty V2</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ST/STM32 Audio USB Device Library</td>
+<td style="text-align: left;">2.4.2MOD</td>
+<td style="text-align: left;"><a href="http://www.st.com/software_license_agreement_liberty_v2">MCD-ST Liberty V2</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>ST/STM32 SensorStreaming WCID Class</strong></td>
+<td style="text-align: left;">1.1.1</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>ST/STM32 USB Device Library</strong></td>
+<td style="text-align: left;">2.5.3</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ST/STM32 Connect Library</td>
+<td style="text-align: left;">1.0.2</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Third_Party/FatFs</td>
+<td style="text-align: left;">0.12c</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Third_Party/parson</td>
+<td style="text-align: left;">1.0.0</td>
+<td style="text-align: left;"><a href="http://opensource.org/licenses/mit-license.php">MIT</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Third_Party/mbedTLS</td>
+<td style="text-align: left;">2.11.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Third_Party/FreeRTOS</td>
+<td style="text-align: left;">10.2.1</td>
+<td style="text-align: left;"><a href="http://opensource.org/licenses/mit-license.php">MIT</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Drivers<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>STM32L4xx CMSIS</strong></td>
+<td style="text-align: left;">1.6.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>STM32L4xx HAL</strong></td>
+<td style="text-align: left;">1.11.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>BSP MicArrayCoupon</strong></td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>BSP STWIN</strong></td>
+<td style="text-align: left;">1.3.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Components<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Common</td>
+<td style="text-align: left;">6.0.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">adau1978</td>
+<td style="text-align: left;">1.0.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">es_wifi</td>
+<td style="text-align: left;">1.4.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hts221</td>
+<td style="text-align: left;">5.2.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>iis2dh</strong></td>
+<td style="text-align: left;">1.0.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">iis2mdc</td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>iis3dwb</strong></td>
+<td style="text-align: left;">1.0.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ism330dhcx</td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">lps22hh</td>
+<td style="text-align: left;">1.1.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stts751</td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Utilities<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>HSDatalog</strong></td>
+<td style="text-align: left;">1.1.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>UltrasoundFFT</strong></td>
+<td style="text-align: left;">1.0.0</td>
+<td style="text-align: left;"><a href="https://www.gnu.org/licenses/gpl-3.0.html">GPLv3</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>qcustomplot</strong></td>
+<td style="text-align: left;">2.0.1</td>
+<td style="text-align: left;"><a href="https://www.gnu.org/licenses/gpl-3.0.html">GPLv3</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>libusb</strong></td>
+<td style="text-align: left;">1.0.0</td>
+<td style="text-align: left;"><a href="Utilities\UltrasoundFFT\SW_source\libusb\lgpl-2.1.txt">LGPL-2.1</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>nlohmann/json</strong></td>
+<td style="text-align: left;">3.7.0</td>
+<td style="text-align: left;"><a href="http://opensource.org/licenses/MIT">MIT</a></td>
+</tr>
+</tbody>
+</table>
+<p>Note: in the table above, components <strong>highlighted</strong> have changed since previous release.</p>
+<h2 id="known-limitations-3">Known Limitations</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="development-toolchains-and-compilers-3">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1</li>
+<li><strong>STM32CubeIDE Version 1.1.0</strong></li>
+</ul>
+<h2 id="supported-devices-and-boards-3">Supported Devices and Boards</h2>
+<ul>
+<li><a href="https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/sensor-solution-eval-boards/steval-stwinkt1.html">STEVAL-STWINKT1</a></li>
+<li><a href="https://www.st.com/en/evaluation-tools/steval-stwinwfv1.html">STEVAL-STWINMAV1</a></li>
+<li><a href="https://www.st.com/en/evaluation-tools/steval-stwinmav1.html">STEVAL-STWINWFV1</a></li>
+</ul>
+<h2 id="backward-compatibility-3">Backward Compatibility</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="dependencies-3">Dependencies</h2>
+<ul>
+<li>None</li>
+</ul>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section4" aria-hidden="true"> <label for="collapse-section4" aria-hidden="true"><strong>v1.2.0 / 15-Nov-2019</strong></label>
+<div>
+<h2 id="main-changes-4">Main Changes</h2>
+<h3 id="maintenance-release-and-product-update-3">Maintenance release and product update</h3>
+<ul>
+<li>Added support for STM32CubeIDE. Dropped support for SW4STM32</li>
+<li>Updated HSDatalog example: now data can be saved on SD card or streamed via USB to a PC host</li>
+<li>Code cleaning, bug fixing and issue solved in BLE_SampleApp and WiFi_Connectivity</li>
+<li>Updated STWIN BSP</li>
+<li>Updated Components drivers</li>
+</ul>
+<h2 id="contents-3">Contents</h2>
+<table>
+<caption>Documentation<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Doxygen documentation</td>
+<td style="text-align: left;">1.2.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/content/st_com/en/search.html#q=SLA0055-t=resources-page=1">SLA0055</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Projects<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BLE_SampleApp</td>
+<td style="text-align: left;">1.1.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HSDatalog</td>
+<td style="text-align: left;">2.0.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MicArrayCoupon</td>
+<td style="text-align: left;">1.1.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OnboardMics</td>
+<td style="text-align: left;">1.2.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Serial_DataLog</td>
+<td style="text-align: left;">1.1.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">WiFi_Connectivity</td>
+<td style="text-align: left;">1.2.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Middlewares<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ST/BlueNRG-MS</td>
+<td style="text-align: left;">1.0.0</td>
+<td style="text-align: left;"><a href="http://www.st.com/software_license_agreement_liberty_v2">MCD-ST Liberty V2</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ST/STM32 Audio USB Device Library</td>
+<td style="text-align: left;">2.4.2MOD</td>
+<td style="text-align: left;"><a href="http://www.st.com/software_license_agreement_liberty_v2">MCD-ST Liberty V2</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ST/STM32 SensorStreaming WCID Class</td>
+<td style="text-align: left;">1.1.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ST/STM32 USB Device Library</td>
+<td style="text-align: left;">2.5.3</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ST/STM32 Connect Library</td>
+<td style="text-align: left;">1.0.2</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Third_Party/FatFs</td>
+<td style="text-align: left;">0.12c</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Third_Party/parson</td>
+<td style="text-align: left;">1.0.0</td>
+<td style="text-align: left;"><a href="http://opensource.org/licenses/mit-license.php">MIT</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Third_Party/mbedTLS</td>
+<td style="text-align: left;">2.11.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Third_Party/FreeRTOS</td>
+<td style="text-align: left;">10.2.1</td>
+<td style="text-align: left;"><a href="http://opensource.org/licenses/mit-license.php">MIT</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Drivers<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">STM32L4xx CMSIS</td>
+<td style="text-align: left;">1.5.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32L4xx HAL</td>
+<td style="text-align: left;">1.10.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BSP MicArrayCoupon</td>
+<td style="text-align: left;">1.0.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BSP STWIN</td>
+<td style="text-align: left;">1.2.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Components<br />
+</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Common</td>
+<td style="text-align: left;">6.0.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">adau1978</td>
+<td style="text-align: left;">1.0.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">es_wifi</td>
+<td style="text-align: left;">1.4.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hts221</td>
+<td style="text-align: left;">5.2.2</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">iis2dh</td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">iis2mdc</td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">iis3dwb</td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ism330dhcx</td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">lps22hh</td>
+<td style="text-align: left;">1.1.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stts751</td>
+<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-limitations-4">Known Limitations</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="development-toolchains-and-compilers-4">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1</li>
+<li>STM32CubeIDE Version 1.0.2</li>
+</ul>
+<h2 id="supported-devices-and-boards-4">Supported Devices and Boards</h2>
+<ul>
+<li><a href="https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/sensor-solution-eval-boards/steval-stwinkt1.html">STEVAL-STWINKT1</a></li>
+<li><a href="https://www.st.com/en/evaluation-tools/steval-stwinwfv1.html">STEVAL-STWINMAV1</a></li>
+<li><a href="https://www.st.com/en/evaluation-tools/steval-stwinmav1.html">STEVAL-STWINWFV1</a></li>
+</ul>
+<h2 id="backward-compatibility-4">Backward Compatibility</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="dependencies-4">Dependencies</h2>
+<ul>
+<li>None</li>
+</ul>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section3"  aria-hidden="true"> <label for="collapse-section3" aria-hidden="true"><strong>v1.1.1 / 14-Oct-2019</strong></label>
+<div>
+<h2 id="main-changes-5">Main Changes</h2>
+<h3 id="patch-release-1">Patch release</h3>
+<ul>
+<li>Bug fixed in HSDatalog example</li>
+</ul>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section2"  aria-hidden="true"> <label for="collapse-section2" aria-hidden="true"><strong>v1.1.0 / 12-Sep-2019</strong></label>
+<div>
+<h2 id="main-changes-6">Main Changes</h2>
+<h3 id="maintenance-release">Maintenance release</h3>
+<ul>
+<li>Bug fixing and added new features in HSDatalog.</li>
+<li>Bug fixing in WiFi_Connectivity.</li>
+<li>Updated STWIN_audio BSP.</li>
+</ul>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section1"  aria-hidden="true"> <label for="collapse-section1" aria-hidden="true"><strong>v1.0.0 / 29-Jul-2019</strong></label>
+<div>
+<h2 id="main-changes-7">Main Changes</h2>
+<h3 id="first-official-release">First official release</h3>
+<ul>
+<li>First official release of firmware for STSW-STWINKT01 Expansion Board</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<footer class="sticky">
+<div class="columns">
+<div class="column" style="width:95%;">
+<p>For complete documentation on <strong>STSW-STWINKT01</strong> , visit: <a href="https://www.st.com/content/st_com/en/products/embedded-software/evaluation-tool-software/stsw-stwinkt01.html">www.st.com</a></p>
+</div><div class="column" style="width:5%;">
+<p><abbr title="Based on template cx566953 version 2.0">Info</abbr></p>
+</div>
+</div>
+</footer>
+</body>
+</html>
