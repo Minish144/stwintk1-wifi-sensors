@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
 
 app.get('/', function(req, res) {
     res.send('Hello World!');
-    console.log('Req Ip: ', req.ip, 'Req body:', req.body);
+    console.log('Req Ip: ', req.ip, 'Req body:', req.body, req.headers);
 });
 
 app.listen(port, () => {
