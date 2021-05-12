@@ -148,13 +148,14 @@ int main(void)
 			  previous_temp = current_temp;
 			  BSP_ENV_SENSOR_GetValue(HTS221_0, ENV_TEMPERATURE, (float *)&current_temp);
 
-			  WIFI_PRINTF("Temp: %f %f %f\r\n", current_temp, previous_temp, fabsf(current_temp - previous_temp));
 			  if (fabsf(current_temp - previous_temp) > 0.05)
 			  {
 				  WIFI_PRINTF("Sending data to server...\r\n");
 				  n = SendTemperatureToServer(current_temp); // sending request
 				  HandleTemperatureError(n);
 			  }
+			  WIFI_PRINTF("Temp: %f %f %f\r\n", current_temp, previous_temp, fabsf(current_temp - previous_temp));
+
 		  }
       }
       else
@@ -190,6 +191,8 @@ int32_t SendTemperatureToServer(float temp)
   char jsonbody[MAX_STRING];
   char response[MAX_STRING];
 
+  int32_t bytes_received = 0;
+
   char apikey[] = "Bearer 46dcfch7981236tdf98dc7asd6ftg9ef8o0asgfa6s8ofas76fsf";
   sprintf(jsonbody, "{\"ts\":%d,\"data\":{\"temperature\":%f}}", (int)time(NULL), temp);
 
@@ -211,9 +214,13 @@ int32_t SendTemperatureToServer(float temp)
   {
         if (net_send(sock, sendline, strlen(sendline), 0) >= 0)
         {
-        	if (net_recv(sock, &response, sizeof(response), 0) >= 0)
+        	memset(response, 0, sizeof(response));
+        	bytes_received = net_recv(sock, response, MAX_STRING, 0);
+        	if (bytes_received >= 0)
         	{
-        		WIFI_PRINTF("Server response:\r\n%s\r\n", response);
+        	    response[bytes_received] = '\0';
+//        		response = (char *)realloc((char *)response, strlen(response));
+        		WIFI_PRINTF("Server response:\r\n%s\r\n", (char*)response);
         	}
         	else
         	{
