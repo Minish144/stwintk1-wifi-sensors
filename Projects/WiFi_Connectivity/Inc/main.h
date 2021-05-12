@@ -28,6 +28,11 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <math.h>
+
 #include "stm32l4xx_hal.h"
 #include "STWIN.h"
 #include "STWIN_conf.h"

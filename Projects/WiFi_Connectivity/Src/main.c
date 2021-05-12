@@ -21,11 +21,13 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include <stdio.h>
-#include <stdint.h>
 
 #ifndef SENSORS_IMPORT
 #define SENSORS_IMPORT
+
+#define CONNECT_ERROR -1
+#define SEND_ERROR -2
+#define RECV_ERROR -3
 
 #include "STWIN_env_sensors.h"
 #include "STWIN_env_sensors.c"
@@ -35,11 +37,17 @@
 /* Global variables ---------------------------------------------------------*/
 #define STATE_TRANSITION_TIMEOUT        10000
 
+#define SSID        "OLGA"
+#define PASSWORD    "9651810010"
+
+#define REMOTE_IP "192.168.1.156"
+#define REMOTE_PORT 65432
+
+#define MAX_STRING 2048
+
 /* USB Device Core handle declaration. */
 USBD_HandleTypeDef hUsbDeviceFS;
 
-#define SSID        "OLGA"
-#define PASSWORD    "9651810010"
 
 void SPI_WIFI_ISR(void);
 
@@ -61,7 +69,8 @@ int32_t es_wifi_driver(net_if_handle_t * pnetif);
 net_if_handle_t netif;
 const   net_event_handler_t  net_handler   = { hnet_notify, &netif };
 
-
+int32_t SendTemperatureToServer(float temp);
+void HandleTemperatureError(int32_t errorc);
 
 /**
   * @brief  Main program
@@ -72,7 +81,9 @@ const   net_event_handler_t  net_handler   = { hnet_notify, &netif };
 int main(void)
 {
   unsigned int random_number = 0;
-  float temp = 0;
+  float current_temp = 0;
+  float previous_temp = 0;
+  int32_t n = 0;
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
@@ -95,19 +106,26 @@ int main(void)
 
 
   /* HTS221 temperature sensor init */
-  if(BSP_ENV_SENSOR_Init(HTS221_0, ENV_TEMPERATURE)==BSP_ERROR_NONE)
+  if(BSP_ENV_SENSOR_Init(HTS221_0, ENV_TEMPERATURE) == BSP_ERROR_NONE)
   {
-	  BSP_ENV_SENSOR_SetOutputDataRate(HTS221_0, ENV_TEMPERATURE, 12.5f);
-      WIFI_PRINTF("HTS221 Initialized\n\r");
+	  WIFI_PRINTF("HTS221 temp sensor was initialized\n\r");
+	  if (BSP_ENV_SENSOR_SetOutputDataRate(HTS221_0, ENV_TEMPERATURE, 12.5f) == BSP_ERROR_NONE)
+	  {
+		  WIFI_PRINTF("Failed to set output rate for HTS221\r\n");
+	  }
+  }
+  else
+  {
+      WIFI_PRINTF("Couldnt initialize HTS221 temp sensor\n\r");
   }
 
 //  BSP_ENV_SENSOR_Get_Temperature_Limit_Status(HTS221_0, &temp, &temp, &temp);
 
   /* Network */
-  if(net_if_init (&netif, &es_wifi_driver, &net_handler) == NET_OK )
+  if(net_if_init(&netif, &es_wifi_driver, &net_handler) == NET_OK )
   {
     net_if_wait_state(&netif,NET_STATE_INITIALIZED,STATE_TRANSITION_TIMEOUT);
-    if ( net_if_start (&netif) == NET_OK )
+    if (net_if_start (&netif) == NET_OK )
     {
       net_wifi_credentials_t Credentials =
       {
@@ -126,28 +144,117 @@ int main(void)
       {
 		  while(1)
 		  {
-			  /* HTTP REQUEST */
-			  TestClient();
-		      BSP_ENV_SENSOR_GetValue(HTS221_0, ENV_TEMPERATURE, (float *)&temp);
-		      WIFI_PRINTF("Temp: %f", temp);
-			  HAL_Delay(1000); // 1s delay
+			  HAL_Delay(4000);
+			  previous_temp = current_temp;
+			  BSP_ENV_SENSOR_GetValue(HTS221_0, ENV_TEMPERATURE, (float *)&current_temp);
+
+			  WIFI_PRINTF("Temp: %f %f %f\r\n", current_temp, previous_temp, fabsf(current_temp - previous_temp));
+			  if (fabsf(current_temp - previous_temp) > 0.05)
+			  {
+				  WIFI_PRINTF("Sending data to server...\r\n");
+				  n = SendTemperatureToServer(current_temp); // sending request
+				  HandleTemperatureError(n);
+			  }
 		  }
       }
+      else
+      {
+    	  WIFI_PRINTF("Wifi connect error\r\n");
+      }
+    }
+    else
+    {
+    	WIFI_PRINTF("Network start error\r\n");
     }
   }
+  else
+  {
+	  WIFI_PRINTF("Network init fail\r\n");
+  }
 
+  WIFI_PRINTF("..Dropped to main loop");
   while(1)
   {
-      BSP_ENV_SENSOR_GetValue(HTS221_0, ENV_TEMPERATURE, (float *)&temp);
+      BSP_ENV_SENSOR_GetValue(HTS221_0, ENV_TEMPERATURE, (float *)&current_temp);
 	  HAL_Delay(1000); // 1s delay
   }
 }
 
+int32_t SendTemperatureToServer(float temp)
+{
+  int sock;
+  sockaddr_in_t addr;
+  int timeout=10000;
+
+  char sendline[MAX_STRING];
+  char jsonbody[MAX_STRING];
+  char response[MAX_STRING];
+
+  char apikey[] = "Bearer 46dcfch7981236tdf98dc7asd6ftg9ef8o0asgfa6s8ofas76fsf";
+  sprintf(jsonbody, "{\"ts\":%d,\"data\":{\"temperature\":%f}}", (int)time(NULL), temp);
+
+  sprintf(
+      sendline,
+      "GET %s HTTP/1.0\r\nHost: %s:%d\r\nAuthorization: %s\r\nContent-type: application/json\r\nContent-length: %d\r\n\r\n%s\r\n",
+	  "/", REMOTE_IP, REMOTE_PORT, apikey, strlen(jsonbody), jsonbody
+  );
+  WIFI_PRINTF("Client request:\r\n%s\r\n", sendline);
+  sock = net_socket(NET_AF_INET, NET_SOCK_STREAM, NET_IPPROTO_TCP);
+  addr.sin_port        = NET_HTONS(REMOTE_PORT);
+  addr.sin_family      = NET_AF_INET;
+  S_ADDR(addr.sin_addr) = net_aton_r (REMOTE_IP);
+
+  net_setsockopt(sock, NET_SOL_SOCKET, NET_SO_RCVTIMEO, &timeout, sizeof(int32_t*));
+  net_setsockopt(sock, NET_SOL_SOCKET, NET_SO_SNDTIMEO, &timeout, sizeof(int32_t*));
+
+  if(net_connect(sock, (sockaddr_t *)&addr, sizeof(addr)) >= 0)
+  {
+        if (net_send(sock, sendline, strlen(sendline), 0) >= 0)
+        {
+        	if (net_recv(sock, &response, sizeof(response), 0) >= 0)
+        	{
+        		WIFI_PRINTF("Server response:\r\n%s\r\n", response);
+        	}
+        	else
+        	{
+        		net_closesocket(sock);
+        		return RECV_ERROR;
+        	}
+        }
+        else
+        {
+        	net_closesocket(sock);
+        	return SEND_ERROR;
+        }
+  }
+  else
+  {
+	  net_closesocket(sock);
+	  return CONNECT_ERROR;
+  }
+  net_closesocket(sock);
+  return 0;
+}
+
+void HandleTemperatureError(int32_t errorc)
+{
+	if (errorc == CONNECT_ERROR)
+	{
+		WIFI_PRINTF("Failed to connect to socket\r\n");
+	}
+	else if (errorc == SEND_ERROR)
+	{
+		WIFI_PRINTF("Failed to send request\r\n");
+	}
+	else if (errorc == RECV_ERROR)
+	{
+		WIFI_PRINTF("Failed to receive data from server\r\n");
+	}
+}
 
 /**
   * @brief RTC init function
   */
-
 static void RTC_Init(void)
 {
   RTC_TimeTypeDef xsTime;
