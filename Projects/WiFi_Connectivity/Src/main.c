@@ -37,8 +37,8 @@
 /* Global variables ---------------------------------------------------------*/
 #define STATE_TRANSITION_TIMEOUT        10000
 
-#define SSID        "Olga"
-#define PASSWORD    "9651810010"
+#define SSID        "123"
+#define PASSWORD    "123"
 
 #define REMOTE_IP "10.5.5.42"
 #define REMOTE_PORT 31853
@@ -69,7 +69,7 @@ int32_t es_wifi_driver(net_if_handle_t * pnetif);
 net_if_handle_t netif;
 const   net_event_handler_t  net_handler   = { hnet_notify, &netif };
 
-int32_t SendTemperatureToServer(float temp);
+int32_t SendMetricsToServer(float temp, float pressure);
 void HandleTemperatureError(int32_t errorc);
 
 /**
@@ -168,7 +168,7 @@ int main(void)
 			  if (fabsf(current_temp - previous_temp) > 0.05)
 			  {
 				  WIFI_PRINTF("Sending data to server...\r\n");
-				  n = SendTemperatureToServer(current_temp); // sending request
+				  n = SendMetricsToServer(current_temp, current_pressure); // sending request
 				  HandleTemperatureError(n);
 			  }
 
@@ -199,7 +199,7 @@ int main(void)
   }
 }
 
-int32_t SendTemperatureToServer(float temp)
+int32_t SendMetricsToServer(float temp, float pressure)
 {
   int sock;
   sockaddr_in_t addr;
@@ -211,7 +211,7 @@ int32_t SendTemperatureToServer(float temp)
 
   int32_t bytes_received = 0;
 
-  char apikey[] = "";
+  char apikey[] = "123";
    sprintf(jsonbody, "{\"data\":{\"temperature\":{\"float\":%f}}}", temp);
 
    sprintf(
@@ -237,7 +237,6 @@ int32_t SendTemperatureToServer(float temp)
         	if (bytes_received >= 0)
         	{
         	    response[bytes_received] = '\0';
-//        		response = (char *)realloc((char *)response, strlen(response));
         		WIFI_PRINTF("Server response:\r\n%s\r\n", (char*)response);
         	}
         	else
