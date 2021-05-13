@@ -25,23 +25,23 @@
 #ifndef SENSORS_IMPORT
 #define SENSORS_IMPORT
 
-#define CONNECT_ERROR -1
-#define SEND_ERROR -2
-#define RECV_ERROR -3
-
 #include "STWIN_env_sensors.h"
 #include "STWIN_env_sensors.c"
 
 #endif
 
+#define CONNECT_ERROR -1
+#define SEND_ERROR -2
+#define RECV_ERROR -3
+
 /* Global variables ---------------------------------------------------------*/
 #define STATE_TRANSITION_TIMEOUT        10000
 
-#define SSID        "OLGA"
+#define SSID        "Olga"
 #define PASSWORD    "9651810010"
 
-#define REMOTE_IP "192.168.1.156"
-#define REMOTE_PORT 65432
+#define REMOTE_IP "10.5.5.42"
+#define REMOTE_PORT 31853
 
 #define MAX_STRING 2048
 
@@ -81,8 +81,13 @@ void HandleTemperatureError(int32_t errorc);
 int main(void)
 {
   unsigned int random_number = 0;
+
   float current_temp = 0;
   float previous_temp = 0;
+
+  float current_pressure = 0;
+  float previous_pressure = 0;
+
   int32_t n = 0;
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
@@ -108,15 +113,23 @@ int main(void)
   /* HTS221 temperature sensor init */
   if(BSP_ENV_SENSOR_Init(HTS221_0, ENV_TEMPERATURE) == BSP_ERROR_NONE)
   {
+	  BSP_ENV_SENSOR_SetOutputDataRate(HTS221_0, ENV_TEMPERATURE, 12.5f);
 	  WIFI_PRINTF("HTS221 temp sensor was initialized\n\r");
-	  if (BSP_ENV_SENSOR_SetOutputDataRate(HTS221_0, ENV_TEMPERATURE, 12.5f) == BSP_ERROR_NONE)
-	  {
-		  WIFI_PRINTF("Failed to set output rate for HTS221\r\n");
-	  }
   }
   else
   {
       WIFI_PRINTF("Couldnt initialize HTS221 temp sensor\n\r");
+  }
+
+  /* LPS22HH pressure sensor init */
+  if(BSP_ENV_SENSOR_Init(LPS22HH_0, ENV_PRESSURE) == BSP_ERROR_NONE)
+  {
+	  BSP_ENV_SENSOR_SetOutputDataRate(LPS22HH_0, ENV_PRESSURE, 50.0f);
+	  WIFI_PRINTF("LPS22HH pressure sensor was initialized\n\r");
+  }
+  else
+  {
+      WIFI_PRINTF("Couldnt initialize LPS22HH pressure sensor\n\r");
   }
 
 //  BSP_ENV_SENSOR_Get_Temperature_Limit_Status(HTS221_0, &temp, &temp, &temp);
@@ -145,8 +158,12 @@ int main(void)
 		  while(1)
 		  {
 			  HAL_Delay(4000);
+
 			  previous_temp = current_temp;
+			  previous_pressure = current_pressure;
+
 			  BSP_ENV_SENSOR_GetValue(HTS221_0, ENV_TEMPERATURE, (float *)&current_temp);
+			  BSP_ENV_SENSOR_GetValue(LPS22HH_0, ENV_PRESSURE, (float *)&current_pressure);
 
 			  if (fabsf(current_temp - previous_temp) > 0.05)
 			  {
@@ -154,8 +171,9 @@ int main(void)
 				  n = SendTemperatureToServer(current_temp); // sending request
 				  HandleTemperatureError(n);
 			  }
-			  WIFI_PRINTF("Temp: %f %f %f\r\n", current_temp, previous_temp, fabsf(current_temp - previous_temp));
 
+			  WIFI_PRINTF("Temp: %f, changed: %f\r\n", current_temp, fabsf(current_temp - previous_temp));
+			  WIFI_PRINTF("Pressure: %f, changed: %f\r\n", current_pressure, fabsf(current_pressure - previous_pressure));
 		  }
       }
       else
@@ -193,15 +211,15 @@ int32_t SendTemperatureToServer(float temp)
 
   int32_t bytes_received = 0;
 
-  char apikey[] = "Bearer 46dcfch7981236tdf98dc7asd6ftg9ef8o0asgfa6s8ofas76fsf";
-  sprintf(jsonbody, "{\"ts\":%d,\"data\":{\"temperature\":%f}}", (int)time(NULL), temp);
+  char apikey[] = "";
+   sprintf(jsonbody, "{\"data\":{\"temperature\":{\"float\":%f}}}", temp);
 
-  sprintf(
-      sendline,
-      "GET %s HTTP/1.0\r\nHost: %s:%d\r\nAuthorization: %s\r\nContent-type: application/json\r\nContent-length: %d\r\n\r\n%s\r\n",
-	  "/", REMOTE_IP, REMOTE_PORT, apikey, strlen(jsonbody), jsonbody
-  );
-  WIFI_PRINTF("Client request:\r\n%s\r\n", sendline);
+   sprintf(
+       sendline,
+       "POST %s HTTP/1.0\r\nHost: %s:%d\r\nAuthorization: %s\r\nContent-type: application/json\r\nContent-length: %d\r\n\r\n%s\r\n",
+ 	  "/api/v1/CreateMetrics", REMOTE_IP, REMOTE_PORT, apikey, strlen(jsonbody), jsonbody
+   );
+   WIFI_PRINTF("Client request:\r\n%s\r\n", sendline);
   sock = net_socket(NET_AF_INET, NET_SOCK_STREAM, NET_IPPROTO_TCP);
   addr.sin_port        = NET_HTONS(REMOTE_PORT);
   addr.sin_family      = NET_AF_INET;
